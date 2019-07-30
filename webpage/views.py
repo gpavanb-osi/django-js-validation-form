@@ -19,13 +19,13 @@ def Registration(request):
     post.zipcode = request.POST.get('zip')
     post.email = request.POST.get('email')
     post.sex = request.POST.get('sex')
-    post.language = request.POST.get('lang')
-    post.about = request.POST.get('desc')
+    post.lang = request.POST.get('lang')
+    post.desc = request.POST.get('desc')
     post.save()
 
-    data = (userid, password,
-            name, address, country,
-            zipcode, email, sex,
-            language, about)
+    data = (post.userid, post.password,
+            post.name, post.address, post.country,
+            post.zipcode, post.email, post.sex,
+            post.lang, post.desc)
 
-    return JsonResponse(data)
+    return JsonResponse(data, safe=False)
